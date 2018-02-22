@@ -40,13 +40,20 @@ var app = {
         
         
         
-$( "#log").append('<br>onDeviceReady');
+            $( "#log").append('<br>onDeviceReady');
+            
+            
         $( "#maj" ).on( "click", function(e) {
+                  var valeur = localStorage.getItem('registrationId');
+                  $('#rid').attr('href', 'http://www.facile2soutenir.fr/api/action/?rid='+valeur);                 
                   $( "#log").append('<BR>avant appel de maj_ajax');
                   maj_ajax();
-                
                   $( "#log").append('<BR>apres appel de maj_ajax');
             });
+        
+        
+        
+        
             function maj_ajax() {
 $( "#log").append('<br>maj_ajax');
                   var ajaxurl = "https://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
@@ -75,7 +82,13 @@ $( "#log").append('<br>ajax est fini');
                   });
             }  
         
-        
+        $( "#formrid" ).submit(function( event ) {
+            event.preventDefault();
+            $('#rid').val('1234');
+            var yo = $('#rid').val();
+            alert(yo);
+            $( "#formrid" ).submit();
+          });
         
         
         
@@ -125,6 +138,7 @@ $( "#log").append('<br>ajax est fini');
             
             
             document.getElementById("gcm_id").innerHTML = data.registrationId;
+            
             
             
         });
