@@ -36,6 +36,48 @@ var app = {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
         app.setupPush();
+        
+        
+        
+        
+        $( "#log").append('<p>onDeviceReady avec fct maj ajax</p>');
+        $( "#maj" ).on( "click", function(e) {
+                  $( "#log").append('<p>click maj</p>');
+                  maj_ajax();
+                
+                  $( "#log").append('<p>after maj</p>');
+            });
+            function maj_ajax() {
+                  $( "#log").append('<p>maj_ajax</p>');
+                  var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
+                  var valeur = localStorage.getItem('registrationId');
+                  $( "#log").append('<p>'+valeur+'</p>');
+                  jQuery.ajax({
+                        url: ajaxurl,
+                        data: {
+                              'action':'am_test_push',
+                              'rid': valeur,
+                        },
+                        success:function(resultat) {
+                              document.getElementById("okpush").innerHTML = 'ok push';      
+                        },
+                  });
+            }  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     },
     setupPush: function() {
         console.log('calling push initial');
@@ -92,22 +134,3 @@ var app = {
     }
 };
 
-
-
-function maj_ajax() {      
-      var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
-      var valeur = localStorage.getItem('registrationId');
-      $("h1").css("font-size", "60px");
-      jQuery.ajax({
-            url: ajaxurl,
-            data: {
-                  'action':'am_test_push',
-                  'rid': valeur,
-            },
-            success:function(resultat) {
-                  document.getElementById("okpush").innerHTML = 'ok push';      
-            },
-      });
-}            
-      
-      

@@ -53,9 +53,11 @@
         
                   <h3>Push Notification Example</h3>
                   <p>Your GCM ID :  <span id="gcm_id"></span></p>
+                  <p>ok push :  <span id="ok_push"></span></p>
 
                   <button id="maj">Mise a jour</button>
-                  <p>OK push :  <span id="okpush"></span></p>
+                  <button id="maj2">Mise a jour 2</button>
+                  <div id="log"></div>
                   
     </div>
     <script type="text/javascript" src="cordova.js"></script>
@@ -64,13 +66,10 @@
     <script type="text/javascript">
         app.initialize();
     </script>
-    <script>$("h1").css("font-size", "12px");
-            $( "#maj" ).on( "click", function(e) {
-                  console.log('click');
-                  $("h1").css("color", "red");
-                  maj_ajax();
-                
-            });
+    <script>
+            
+            $( "#log").append('<p>script inline</p>');
+            
       </script>
 </body>
 
