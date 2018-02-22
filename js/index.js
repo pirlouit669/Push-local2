@@ -51,7 +51,7 @@ $( "#log").append('<br>onDeviceReady');
 $( "#log").append('<br>maj_ajax');
                   var ajaxurl = "https://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
                   var valeur = localStorage.getItem('registrationId');
-$( "#log").append('<br>RID : '+valeur);
+$( "#log").append('<br><div style="max-width:250p">RID : '+valeur+'</div>');
                   $.ajax({
                         url: ajaxurl,
                         data: {
