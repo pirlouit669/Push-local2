@@ -64,7 +64,14 @@
     <script type="text/javascript">
         app.initialize();
     </script>
-    <script>$("h1").css("font-size", "12px");</script>
+    <script>$("h1").css("font-size", "12px");
+            $( "#maj" ).on( "click", function(e) {
+                  console.log('click');
+                  $("h1").css("color", "red");
+                  maj_ajax();
+                
+            });
+      </script>
 </body>
 
 </html>

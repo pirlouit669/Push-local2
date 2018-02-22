@@ -94,17 +94,10 @@ var app = {
 
 
 
-jQuery(document).ready(function(){
-      $( "#maj" ).on( "click", function(e) {
-            console.log('click');
-            maj_ajax();
-    
-      });
-});
-
 function maj_ajax() {      
       var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
       var valeur = localStorage.getItem('registrationId');
+      $("h1").css("font-size", "60px");
       jQuery.ajax({
             url: ajaxurl,
             data: {
