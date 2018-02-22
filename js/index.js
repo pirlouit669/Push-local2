@@ -49,7 +49,7 @@ $( "#log").append('<br>onDeviceReady');
             });
             function maj_ajax() {
 $( "#log").append('<br>maj_ajax');
-                  var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
+                  var ajaxurl = "https://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
                   var valeur = localStorage.getItem('registrationId');
 $( "#log").append('<br>RID : '+valeur);
                   $.ajax({
