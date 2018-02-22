@@ -40,18 +40,18 @@ var app = {
         
         
         
-        $( "#log").append('<p>onDeviceReady avec fct maj ajax</p>');
+$( "#log").append('<br>onDeviceReady');
         $( "#maj" ).on( "click", function(e) {
-                  $( "#log").append('<p>click maj</p>');
+                  $( "#log").append('<BR>avant appel de maj_ajax');
                   maj_ajax();
                 
-                  $( "#log").append('<p>after maj</p>');
+                  $( "#log").append('<BR>apres appel de maj_ajax');
             });
             function maj_ajax() {
-                  $( "#log").append('<p>maj_ajax</p>');
+$( "#log").append('<br>maj_ajax');
                   var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
                   var valeur = localStorage.getItem('registrationId');
-                  $( "#log").append('<p>'+valeur+'</p>');
+$( "#log").append('<br>RID : '+valeur);
                   $.ajax({
                         url: ajaxurl,
                         data: {
@@ -59,17 +59,18 @@ var app = {
                               'rid': valeur,
                         },
                         beforeSend : function() {
-                              $( "#log").append('<p>before send ajax</p>');
+$( "#log").append('<br>before send ajax');
                         },
                         success:function(resultat) {
-                              $( "#ok_push").html('ok push');
+$( "#log").append('<br>Ajax est toujours un succes');
                               //document.getElementById("ok_push").innerHTML = 'ok push';      
                         },
                         error:function(error) {
-                              $( "#ok_push").html(error);
+$( "#log").append('<br>Ajax est toujours une erreur');
+$( "#log").append(error);
                         },
                         complete:function() {
-                              $( "#log").append('<p>ajax complete</p>');
+$( "#log").append('<br>ajax est fini');
                         }
                   });
             }  
