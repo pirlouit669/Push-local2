@@ -95,7 +95,8 @@ var app = {
 
 
 jQuery(document).ready(function(){
-      $( "#maj" ).on( "click", function(e) {  
+      $( "#maj" ).on( "click", function(e) {
+            console.log('click');
             maj_ajax();
     
       });
