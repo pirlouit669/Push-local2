@@ -93,7 +93,7 @@ var app = {
 };
 
 
-
+/*
 jQuery(document).ready(function(){
       $( "#maj" ).on( "click", function(e) {  
             maj_ajax();
@@ -115,6 +115,6 @@ function maj_ajax() {
             },
       });
 }
-                  
+      */            
       
       
