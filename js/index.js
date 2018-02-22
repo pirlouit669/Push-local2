@@ -35,12 +35,9 @@ var app = {
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
-jQuery('#etape1').html('ok');
         app.setupPush();
-jQuery('#etape11').html('ok');
     },
     setupPush: function() {
-jQuery('#etape2').html('ok');
         console.log('calling push initial');
         var push = PushNotification.init({
             "android": {
@@ -55,10 +52,8 @@ jQuery('#etape2').html('ok');
             "windows": {}
         });
         console.log('after init');
-jQuery('#etape3').html('ok');
 
         push.on('registration', function(data) {
-jQuery('#etape4').html('ok');
             console.log('registration event: ' + data.registrationId);
 
             var oldRegId = localStorage.getItem('registrationId');
@@ -78,29 +73,6 @@ jQuery('#etape4').html('ok');
             
             document.getElementById("gcm_id").innerHTML = data.registrationId;
             
-jQuery('#etape5').html('ok');
-            
-            
-            var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
-jQuery('#etape6').html('ok');
-            jQuery.ajax({
-                  url: ajaxurl,
-                  data: {
-                        'action':'am_test_push',
-                        'rid': data.registrationId,
-                  },
-                  beforeSend:function() {
-jQuery('#etape7').html('ok');
-                  },
-                  success:function(resultat) {
-                        document.getElementById("okpush").innerHTML = 'ok push';
-jQuery('#etape8').html('ok');                        
-                  },
-                  complete : function() {
-jQuery('#etape9').html('ok');
-                  },
-            });
-jQuery('#etape10').html('ok');
             
         });
 
@@ -119,3 +91,30 @@ jQuery('#etape10').html('ok');
        });
     }
 };
+
+
+
+jQuery(document).ready(function(){
+      $( "#maj" ).on( "click", function(e) {  
+            maj_ajax();
+    
+      });
+});
+
+function maj_ajax() {      
+      var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
+      var valeur = localStorage.getItem('registrationId');
+      jQuery.ajax({
+            url: ajaxurl,
+            data: {
+                  'action':'am_test_push',
+                  'rid': valeur,
+            },
+            success:function(resultat) {
+                  document.getElementById("okpush").innerHTML = 'ok push';      
+            },
+      });
+}
+                  
+      
+      
