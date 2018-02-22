@@ -52,15 +52,25 @@ var app = {
                   var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
                   var valeur = localStorage.getItem('registrationId');
                   $( "#log").append('<p>'+valeur+'</p>');
-                  jQuery.ajax({
+                  $.ajax({
                         url: ajaxurl,
                         data: {
                               'action':'am_test_push',
                               'rid': valeur,
                         },
-                        success:function(resultat) {
-                              document.getElementById("okpush").innerHTML = 'ok push';      
+                        beforeSend : function() {
+                              $( "#log").append('<p>before send ajax</p>');
                         },
+                        success:function(resultat) {
+                              $( "#ok_push").html('ok push');
+                              //document.getElementById("ok_push").innerHTML = 'ok push';      
+                        },
+                        error:function(error) {
+                              $( "#ok_push").html(error);
+                        },
+                        complete:function() {
+                              $( "#log").append('<p>ajax complete</p>');
+                        }
                   });
             }  
         
