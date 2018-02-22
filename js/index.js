@@ -38,7 +38,7 @@ var app = {
         app.setupPush();
     },
     setupPush: function() {
-        console.log('calling push init');
+        console.log('calling push initial');
         var push = PushNotification.init({
             "android": {
                 "senderID": "1005363421918"
@@ -69,6 +69,22 @@ var app = {
 
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
+            
+            
+            document.getElementById("gcm_id").innerHTML = data.registrationId;
+            
+            var ajaxurl = "http://www.facile2soutenir.fr/wp-admin/admin-ajax.php";
+            jQuery.ajax({
+                  url: ajaxurl,
+                  data: {
+                        'action':'am_test_push',
+                        'rid': data.registrationId,
+                  },
+                  success:function(resultat) {
+                        document.getElementById("okpush").innerHTML = 'ok push';      
+                  },
+            });
+            
         });
 
         push.on('error', function(e) {
