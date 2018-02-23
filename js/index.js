@@ -46,9 +46,9 @@ var app = {
         $( "#maj" ).on( "click", function(e) {
                   var valeur = localStorage.getItem('registrationId');
                   $('#rid').attr('href', 'http://www.facile2soutenir.fr/api/action/?rid='+valeur);                 
-                  $( "#log").append('<BR>avant appel de maj_ajax');
+$( "#log").append('<BR>avant appel de maj_ajax');
                   maj_ajax();
-                  $( "#log").append('<BR>apres appel de maj_ajax');
+$( "#log").append('<BR>apres appel de maj_ajax');
             });
         
         
